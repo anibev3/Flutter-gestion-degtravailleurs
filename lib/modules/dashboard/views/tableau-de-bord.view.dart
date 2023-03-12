@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projet_mars_nan/modules/dashboard/widgets/bottonNavigation.widget.dart';
 import 'package:projet_mars_nan/modules/dashboard/widgets/drawer.widget.dart';
 import 'package:projet_mars_nan/modules/gestions/views/gestion-travailleurs.view.dart';
+import 'package:projet_mars_nan/modules/gestions/views/liste-travailleur.view.dart';
 
 class TableauDeBordView extends StatefulWidget {
   const TableauDeBordView({Key? key}) : super(key: key);
@@ -75,7 +76,7 @@ class _TableauDeBordViewState extends State<TableauDeBordView> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: DrawerWidget(),
-      bottomNavigationBar: BottonNavigationWidget_(),
+      bottomNavigationBar: BottonNavigationWidget(),
       appBar: AppBar(
         title: const Text('Gestion des travailleurs'),
       ),
@@ -206,4 +207,7 @@ class _TableauDeBordViewState extends State<TableauDeBordView> {
       ),
     );
   }
+
+  final WorkersList _workersList = WorkersList();
+  List<Worker> get workers => _workersList.workers;
 }

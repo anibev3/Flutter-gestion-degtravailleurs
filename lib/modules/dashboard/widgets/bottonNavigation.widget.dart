@@ -18,11 +18,11 @@ class BottonNavigationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NavigationBar();
+    return NavigationBar(context);
   }
 
   // ignore: non_constant_identifier_names
-  Widget NavigationBar() {
+  Widget NavigationBar(BuildContext context) {
     return Container(
       color: const Color(0xfff6f8ff),
       child: Container(
@@ -43,6 +43,28 @@ class BottonNavigationWidget extends StatelessWidget {
             selectedItemColor: const Color(0xFF5F67EA),
             selectedFontSize: 12,
             unselectedFontSize: 12,
+            onTap: (value) {
+              if (value == 0) {
+                Navigator.of(context).push(MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const TableauDeBordView(),
+                ));
+              }
+              if (value == 1) {
+                Navigator.of(context).push(MaterialPageRoute<void>(
+                  builder: (BuildContext context) => AddWorkerPage(),
+                ));
+              }
+              if (value == 3) {
+                Navigator.of(context).push(MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const ListeTachesView(),
+                ));
+              }
+              if (value == 4) {
+                Navigator.of(context).push(MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const ListeTachesView(),
+                ));
+              }
+            },
             unselectedItemColor: Colors.grey.withOpacity(0.7),
             type: BottomNavigationBarType.fixed,
             items: [
@@ -70,7 +92,7 @@ class BottonNavigationWidget extends StatelessWidget {
                 ),
               ),
               BottomNavigationBarItem(
-                label: "Film",
+                label: "taches",
                 icon: Container(
                   margin: const EdgeInsets.all(5),
                   padding: const EdgeInsets.all(5),
@@ -105,59 +127,6 @@ class BottonNavigationWidget extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-// ignore: camel_case_types
-class BottonNavigationWidget_ extends StatefulWidget {
-  const BottonNavigationWidget_({Key? key}) : super(key: key);
-
-  @override
-  _BottonNavigationWidgetState createState() => _BottonNavigationWidgetState();
-}
-
-class _BottonNavigationWidgetState extends State<BottonNavigationWidget_> {
-  int _selectedIndex = 0;
-  List<Widget> _pages = [
-    const TableauDeBordView(),
-    const ParametresView(),
-    AddWorkerPage(),
-    const ListeTachesView()
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Gestion des travailleurs'),
-      ),
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_rounded),
-            label: 'Accueil',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people),
-            label: 'Travailleurs',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.work),
-            label: 'Tâches',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.work),
-            label: 'Tâches',
-          ),
-        ],
       ),
     );
   }

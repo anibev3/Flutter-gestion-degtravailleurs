@@ -9,12 +9,16 @@ class Worker {
 }
 
 class WorkersList {
-  final List<Worker> _workers = [];
+  List<Worker> _workers = [];
 
   List<Worker> get workers => _workers;
 
   void addWorker(Worker worker) {
     _workers.add(worker);
+  }
+
+  List<Worker> getWorkers() {
+    return _workers;
   }
 }
 
