@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projet_mars_nan/modules/dashboard/widgets/bottonNavigation.widget.dart';
 import 'package:projet_mars_nan/modules/dashboard/widgets/drawer.widget.dart';
+import 'package:projet_mars_nan/modules/gestions/views/gestion-travailleurs.view.dart';
 
 class TableauDeBordView extends StatefulWidget {
   const TableauDeBordView({Key? key}) : super(key: key);
@@ -74,7 +75,7 @@ class _TableauDeBordViewState extends State<TableauDeBordView> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: DrawerWidget(),
-      bottomNavigationBar: BottomTest(),
+      bottomNavigationBar: BottonNavigationWidget_(),
       appBar: AppBar(
         title: const Text('Gestion des travailleurs'),
       ),
@@ -107,6 +108,11 @@ class _TableauDeBordViewState extends State<TableauDeBordView> {
                   ElevatedButton(
                     onPressed: () {
                       // Naviguer vers la page d'affectation des tâches
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GestionTravailleursView()),
+                      );
                     },
                     child: Text('Affecter tâche'),
                   ),
