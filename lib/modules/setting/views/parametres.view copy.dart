@@ -27,8 +27,6 @@ class _ParametresViewState extends State<ParametresView> {
   void initState() {
     super.initState();
     _refreshJournals(); // Loading the diary->{agenda} when the app starts
-    print(_journals.length);
-    print(_journals);
   }
 
   final TextEditingController _titleController = TextEditingController();

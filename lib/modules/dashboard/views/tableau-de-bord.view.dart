@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:projet_mars_nan/modules/dashboard/widgets/bottonNavigation.widget.dart';
 import 'package:projet_mars_nan/modules/dashboard/widgets/drawer.widget.dart';
+import 'package:projet_mars_nan/modules/gestions/controller/travailleurs.controleur.dart';
 import 'package:projet_mars_nan/modules/gestions/views/gestion-travailleurs.view.dart';
-import 'package:projet_mars_nan/modules/gestions/views/liste-travailleur.view.dart';
+// import 'package:projet_mars_nan/modules/setting/controller/dataBase.db.dart';
 
 class TableauDeBordView extends StatefulWidget {
   const TableauDeBordView({Key? key}) : super(key: key);
@@ -12,6 +13,36 @@ class TableauDeBordView extends StatefulWidget {
 }
 
 class _TableauDeBordViewState extends State<TableauDeBordView> {
+  // All workers
+  List<Map<String, dynamic>> _journalsOfWorker = [];
+  bool _isLoading = true;
+
+  // This function is used to fetch all data from the database
+  void _refreshJournalsOfWorkers() async {
+    final data = await SQLHelper.getworkers();
+    setState(() {
+      _journalsOfWorker = data;
+      _isLoading = false;
+    });
+  }
+
+// Insert a new journal to the database
+  Future<void> _addItem() async {
+    double salary = double.parse(_salaryController.text);
+    await SQLHelper.createItem(
+        _nameController.text, _jobController.text, salary);
+    _refreshJournalsOfWorkers();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _refreshJournalsOfWorkers(); // Loading the diary->{agenda} when the app starts
+    print("Voici les informations");
+    print(_journalsOfWorker);
+    print(_journalsOfWorker.length);
+  }
+
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _jobController = TextEditingController();
   final TextEditingController _salaryController = TextEditingController();
@@ -55,12 +86,16 @@ class _TableauDeBordViewState extends State<TableauDeBordView> {
             ),
             TextButton(
               onPressed: () {
-                final name = _nameController.text;
-                final job = _jobController.text;
+                _addItem();
+                print(_nameController.text);
+                print(_jobController.text);
+                // final name = _nameController.text;
+                // final job = _jobController.text;
                 final salary = double.parse(_salaryController.text);
+                print(salary);
 
-                // Ajouter le travailleur à la liste des travailleurs
-                // TODO: implémenter cette méthode
+                // // Ajouter le travailleur à la liste des travailleurs
+                // // TODO: implémenter cette méthode
 
                 Navigator.of(context).pop();
               },
@@ -86,6 +121,26 @@ class _TableauDeBordViewState extends State<TableauDeBordView> {
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Transform(
+                transform: Matrix4.identity()..rotateZ(20),
+                origin: const Offset(150, 50),
+                child: Image.asset(
+                  'assets/images/bg_liquid.png',
+                  width: 200,
+                ),
+              ),
+              Positioned(
+                right: 0,
+                top: 200,
+                child: Transform(
+                  transform: Matrix4.identity()..rotateZ(20),
+                  origin: const Offset(180, 100),
+                  child: Image.asset(
+                    'assets/images/bg_liquid.png',
+                    width: 200,
+                  ),
+                ),
+              ),
               Center(
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment
@@ -178,9 +233,9 @@ class _TableauDeBordViewState extends State<TableauDeBordView> {
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.amberAccent,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: const Text(
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
                           "Nombre de taches terminé : ",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
@@ -196,6 +251,8 @@ class _TableauDeBordViewState extends State<TableauDeBordView> {
                       ),
                       child: Image.asset(
                         "assets/images/1.jpeg",
+                        fit: BoxFit.cover,
+                        // alignment: Alignment.center,
                       ),
                     ),
                   ],
@@ -207,7 +264,4 @@ class _TableauDeBordViewState extends State<TableauDeBordView> {
       ),
     );
   }
-
-  final WorkersList _workersList = WorkersList();
-  List<Worker> get workers => _workersList.workers;
 }

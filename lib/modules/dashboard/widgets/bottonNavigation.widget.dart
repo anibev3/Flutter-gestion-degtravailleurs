@@ -10,7 +10,7 @@ class BottonNavigationWidget extends StatelessWidget {
   final List<Widget> _pages = [
     const TableauDeBordView(),
     const ParametresView(),
-    AddWorkerPage(),
+    const ListWorkersView(),
     const ListeTachesView()
   ];
 
@@ -51,17 +51,17 @@ class BottonNavigationWidget extends StatelessWidget {
               }
               if (value == 1) {
                 Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (BuildContext context) => AddWorkerPage(),
+                  builder: (BuildContext context) => ListWorkersView(),
+                ));
+              }
+              if (value == 2) {
+                Navigator.of(context).push(MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const ListeTachesView(),
                 ));
               }
               if (value == 3) {
                 Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const ListeTachesView(),
-                ));
-              }
-              if (value == 4) {
-                Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const ListeTachesView(),
+                  builder: (BuildContext context) => const ParametresView(),
                 ));
               }
             },
