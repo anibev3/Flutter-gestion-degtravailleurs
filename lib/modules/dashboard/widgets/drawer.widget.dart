@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projet_mars_nan/modules/test/quiz.dart';
+import 'package:projet_mars_nan/modules/test/testbjointure.dart';
 
 class DrawerWidget extends StatefulWidget {
   const DrawerWidget({Key? key}) : super(key: key);
@@ -61,6 +63,24 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             leading: Icon(Icons.grid_3x3_outlined),
             title: Text("Les taches"),
             onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.grid_3x3_outlined),
+            title: Text("Quiz Screen"),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute<void>(
+                builder: (BuildContext context) => QuizView(),
+              ));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.grid_3x3_outlined),
+            title: Text("Test Jointure"),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute<void>(
+                builder: (BuildContext context) => Testbjointure(),
+              ));
+            },
           ),
           ListTile(
             leading: Icon(Icons.settings),

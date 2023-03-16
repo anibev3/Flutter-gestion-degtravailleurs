@@ -1,28 +1,55 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
-import 'package:projet_mars_nan/modules/dashboard/views/tableau-de-bord.view.dart';
-import 'package:projet_mars_nan/modules/gestions/views/liste-taches.view.dart';
-import 'package:projet_mars_nan/modules/gestions/views/liste-travailleur.view.dart';
-import 'package:projet_mars_nan/modules/setting/views/parametres.view.dart';
+import 'package:projet_mars_nan/modules/gestions/views/lib/pages/home/widgets/category.dart';
+import 'package:projet_mars_nan/modules/gestions/views/lib/pages/home/widgets/header.dart';
+import 'package:projet_mars_nan/modules/gestions/views/lib/pages/home/widgets/search.dart';
 
-class BottonNavigationWidget extends StatelessWidget {
-  BottonNavigationWidget({Key? key}) : super(key: key);
-
-  final List<Widget> _pages = [
-    const TableauDeBordView(),
-    const ParametresView(),
-    const ListWorkersView(),
-    const ListeTachesView()
-  ];
-
-  final int _currentIndex = 0;
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return NavigationBar(context);
+    return Scaffold(
+      backgroundColor: const Color(0xFF5F67EA),
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Transform(
+              transform: Matrix4.identity()..rotateZ(20),
+              origin: const Offset(150, 50),
+              child: Image.asset(
+                'assets/images/bg_liquid.png',
+                width: 200,
+              ),
+            ),
+            Positioned(
+              right: 0,
+              top: 200,
+              child: Transform(
+                transform: Matrix4.identity()..rotateZ(20),
+                origin: const Offset(180, 100),
+                child: Image.asset(
+                  'assets/images/bg_liquid.png',
+                  width: 200,
+                ),
+              ),
+            ),
+            Column(
+              children: [
+                HeaderSection(),
+                const SearchSection(),
+                CategorySection(),
+              ],
+            )
+          ],
+        ),
+      ),
+      bottomNavigationBar: NavigationBar(),
+    );
   }
 
-  // ignore: non_constant_identifier_names
-  Widget NavigationBar(BuildContext context) {
+  Widget NavigationBar() {
     return Container(
       color: const Color(0xfff6f8ff),
       child: Container(
@@ -43,40 +70,18 @@ class BottonNavigationWidget extends StatelessWidget {
             selectedItemColor: const Color(0xFF5F67EA),
             selectedFontSize: 12,
             unselectedFontSize: 12,
-            onTap: (value) {
-              if (value == 0) {
-                Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const TableauDeBordView(),
-                ));
-              }
-              if (value == 1) {
-                Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (BuildContext context) => ListWorkersView(),
-                ));
-              }
-              if (value == 2) {
-                Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (BuildContext context) => ListeTachesView(),
-                ));
-              }
-              if (value == 3) {
-                Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const ParametresView(),
-                ));
-              }
-            },
             unselectedItemColor: Colors.grey.withOpacity(0.7),
             type: BottomNavigationBarType.fixed,
             items: [
               const BottomNavigationBarItem(
-                label: 'Accueil',
+                label: 'home',
                 icon: Icon(
                   Icons.home_rounded,
                   size: 50,
                 ),
               ),
               BottomNavigationBarItem(
-                label: "Travailleurs",
+                label: "Application",
                 icon: Container(
                   margin: const EdgeInsets.all(5),
                   padding: const EdgeInsets.all(5),
@@ -92,7 +97,7 @@ class BottonNavigationWidget extends StatelessWidget {
                 ),
               ),
               BottomNavigationBarItem(
-                label: "taches",
+                label: "Film",
                 icon: Container(
                   margin: const EdgeInsets.all(5),
                   padding: const EdgeInsets.all(5),
@@ -108,7 +113,7 @@ class BottonNavigationWidget extends StatelessWidget {
                 ),
               ),
               BottomNavigationBarItem(
-                label: "Parametre",
+                label: "Book",
                 icon: Container(
                   margin: const EdgeInsets.all(5),
                   padding: const EdgeInsets.all(5),
@@ -117,8 +122,7 @@ class BottonNavigationWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Icon(
-                    // Icons.auto_stories_rounded,
-                    Icons.settings,
+                    Icons.auto_stories_rounded,
                     size: 30,
                     color: Colors.grey,
                   ),

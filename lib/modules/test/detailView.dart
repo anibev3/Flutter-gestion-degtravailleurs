@@ -1,42 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:projet_mars_nan/modules/gestions/controller/jointure-taskworker.controller.dart';
 
-class DetailTravTachView extends StatefulWidget {
+class DetailView extends StatefulWidget {
   final int id;
   // final Game game;
 
-  const DetailTravTachView({
+  const DetailView({
     Key? key,
     required this.id,
   }) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _DetailTravTachViewState createState() => _DetailTravTachViewState();
+  _DetailViewState createState() => _DetailViewState();
 }
 
-class _DetailTravTachViewState extends State<DetailTravTachView> {
-  List<String> myItems = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-    'Item 6',
-    'Item 7',
-    'Item 8',
-    'Item 9',
-    'Item 10',
-    'Item 11',
-    'Item 12',
-    'Item 13',
-    'Item 14',
-    'Item 15',
-    'Item 16',
-    'Item 17',
-    'Item 18',
-    'Item 19',
-    'Item 20',
-  ];
+class _DetailViewState extends State<DetailView> {
+  dynamic _dataOfWorker;
+  List<Map<String, dynamic>> _journals = [];
+
+  bool _isLoading = true;
+
+  // This function is used to fetch all data from the database
+  void _refreshJournals() async {
+    final dataOfWorker = await SQLJointureHelper.getworker(3);
+    final dataOfWorkerTasks = await SQLJointureHelper.getTasksByUser(3);
+    setState(() {
+      _journals = dataOfWorkerTasks;
+
+      _dataOfWorker = dataOfWorker;
+      print(_journals);
+      _isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _refreshJournals();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -166,55 +169,3 @@ class _DetailTravTachViewState extends State<DetailTravTachView> {
     );
   }
 }
-
-// class DetailTravTachView extends StatefulWidget {
-//   final int id;
-
-//   const DetailTravTachView({Key? key, required this.id}) : super(key: key);
-
-//   @override
-//   _DetailTravTachViewState createState() => _DetailTravTachViewState();
-// }
-
-// class _DetailTravTachViewState extends State<DetailTravTachView> {
-//   Map<String, dynamic>? _workerData;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _fetchWorkerData();
-//   }
-
-//   void _fetchWorkerData() async {
-//     final data = await SQLHelper.getWorkerById(widget.id);
-//     setState(() {
-//       _workerData = data;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Détails du travailleur'),
-//       ),
-//       body: _workerData == null
-//           ? const Center(child: CircularProgressIndicator())
-//           : SingleChildScrollView(
-//               child: Padding(
-//                 padding: const EdgeInsets.all(16.0),
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Text('Nom: ${_workerData!['name']}'),
-//                     const SizedBox(height: 16.0),
-//                     Text('Fonction: ${_workerData!['fonction']}'),
-//                     const SizedBox(height: 16.0),
-//                     Text('Autres informations: ${_workerData!['otherInfo']}'),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//     );
-//   }
-// }
