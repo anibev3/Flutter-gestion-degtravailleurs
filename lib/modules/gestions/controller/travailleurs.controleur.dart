@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart' as sql;
-import 'package:path/path.dart';
 
 // flutter pub add sqflite
 // If you run the above command in your editor terminal, it will install the latest version.

@@ -16,7 +16,7 @@ class DetailView extends StatefulWidget {
 }
 
 class _DetailViewState extends State<DetailView> {
-  dynamic _dataOfWorker;
+  Map<String, dynamic> _dataOfWorker = {};
   List<Map<String, dynamic>> _journals = [];
 
   bool _isLoading = true;
@@ -27,8 +27,7 @@ class _DetailViewState extends State<DetailView> {
     final dataOfWorkerTasks = await SQLJointureHelper.getTasksByUser(3);
     setState(() {
       _journals = dataOfWorkerTasks;
-
-      _dataOfWorker = dataOfWorker;
+      _dataOfWorker = dataOfWorker as Map<String, dynamic>;
       print(_journals);
       _isLoading = false;
     });
@@ -75,14 +74,16 @@ class _DetailViewState extends State<DetailView> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        "Anibé Alexis Vianney",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
+                      _dataOfWorker != null
+                          ? Text(
+                              _dataOfWorker['name'],
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            )
+                          : Text('No worker data found'),
+                      SizedBox(height: 10),
                       Text(
                         "Dévéloppeur web et mobile",
                         style: TextStyle(

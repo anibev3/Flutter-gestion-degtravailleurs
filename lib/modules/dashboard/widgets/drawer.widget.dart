@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projet_mars_nan/modules/test/quiz.dart';
 import 'package:projet_mars_nan/modules/test/testbjointure.dart';
+import 'package:projet_mars_nan/modules/test/testjointure-worker.view.dart';
 
 class DrawerWidget extends StatefulWidget {
   const DrawerWidget({Key? key}) : super(key: key);
@@ -75,10 +76,19 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           ),
           ListTile(
             leading: Icon(Icons.grid_3x3_outlined),
-            title: Text("Test Jointure"),
+            title: Text("Test Jointure Taches"),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute<void>(
                 builder: (BuildContext context) => Testbjointure(),
+              ));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.grid_3x3_outlined),
+            title: Text("Test Jointure Travailleur"),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute<void>(
+                builder: (BuildContext context) => TestjointureWorkerView(),
               ));
             },
           ),

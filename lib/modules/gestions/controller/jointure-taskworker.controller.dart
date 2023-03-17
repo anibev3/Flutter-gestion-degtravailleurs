@@ -26,7 +26,7 @@ class SQLJointureHelper {
   }
 
   static Future<void> createUserTable(sql.Database database) async {
-    await database.execute("""CREATE TABLE users(
+    await database.execute("""CREATE TABLE worker(
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         username TEXT NOT NULL,
         password TEXT NOT NULL,
