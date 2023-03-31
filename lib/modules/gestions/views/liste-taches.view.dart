@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projet_mars_nan/modules/gestions/controller/taches.controleur.dart';
 import 'package:projet_mars_nan/modules/gestions/views/detail-trav-tach.view.dart';
-import 'package:projet_mars_nan/modules/gestions/views/lib/models/game.dart';
 
 class ListeTachesView extends StatefulWidget {
   const ListeTachesView({Key? key}) : super(key: key);
@@ -15,7 +14,6 @@ class _ListeTachesViewState extends State<ListeTachesView> {
   // All journals
   List<Map<String, dynamic>> _journalsOfTask = [];
   bool _isLoading = true;
-  final List<Game> games = Game.games();
 
   // This function is used to fetch all data from the database
   void _refreshJournals() async {

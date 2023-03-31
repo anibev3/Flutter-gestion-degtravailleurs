@@ -67,15 +67,15 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             title: Text("Les taches"),
             onTap: () {},
           ),
-          ListTile(
-            leading: Icon(Icons.grid_3x3_outlined),
-            title: Text("Quiz Screen"),
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute<void>(
-                builder: (BuildContext context) => QuizView(),
-              ));
-            },
-          ),
+          // ListTile(
+          //   leading: Icon(Icons.grid_3x3_outlined),
+          //   title: Text("Quiz Screen"),
+          //   onTap: () {
+          //     Navigator.of(context).push(MaterialPageRoute<void>(
+          //       builder: (BuildContext context) => QuizView(),
+          //     ));
+          //   },
+          // ),
           ListTile(
             leading: Icon(Icons.grid_3x3_outlined),
             title: Text("Test Jointure Taches"),
@@ -94,24 +94,24 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               ));
             },
           ),
-          ListTile(
-            leading: Icon(Icons.grid_3x3_outlined),
-            title: Text("Image Picker"),
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute<void>(
-                builder: (BuildContext context) => ImagePickerView(),
-              ));
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.grid_3x3_outlined),
-            title: Text("Challenge"),
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute<void>(
-                builder: (BuildContext context) => Challenge(),
-              ));
-            },
-          ),
+          // ListTile(
+          //   leading: Icon(Icons.grid_3x3_outlined),
+          //   title: Text("Image Picker"),
+          //   onTap: () {
+          //     Navigator.of(context).push(MaterialPageRoute<void>(
+          //       builder: (BuildContext context) => ImagePickerView(),
+          //     ));
+          //   },
+          // ),
+          // ListTile(
+          //   leading: Icon(Icons.grid_3x3_outlined),
+          //   title: Text("Challenge"),
+          //   onTap: () {
+          //     Navigator.of(context).push(MaterialPageRoute<void>(
+          //       builder: (BuildContext context) => Challenge(),
+          //     ));
+          //   },
+          // ),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text("Parametres"),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projet_mars_nan/modules/gestions/controller/travailleurs.controleur.dart';
 import 'package:projet_mars_nan/modules/gestions/views/detail-trav-tach.view.dart';
-import 'package:projet_mars_nan/modules/gestions/views/lib/models/game.dart';
 
 class ListWorkersView extends StatefulWidget {
   const ListWorkersView({Key? key}) : super(key: key);
@@ -15,7 +14,6 @@ class _ListWorkersViewState extends State<ListWorkersView> {
   // All TabWorkers
   List<Map<String, dynamic>> _tabWorkers = [];
   bool _isLoading = true;
-  final List<Game> games = Game.games();
 
   // This function is used to fetch all data from the database
   void _refreshTabWorkers() async {

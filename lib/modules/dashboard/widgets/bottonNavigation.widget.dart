@@ -3,13 +3,15 @@ import 'package:projet_mars_nan/modules/dashboard/views/tableau-de-bord.view.dar
 import 'package:projet_mars_nan/modules/gestions/views/liste-taches.view.dart';
 import 'package:projet_mars_nan/modules/gestions/views/liste-travailleur.view.dart';
 import 'package:projet_mars_nan/modules/setting/views/parametres.view.dart';
+import 'package:projet_mars_nan/modules/test/testbjointure.dart';
+import 'package:projet_mars_nan/modules/test/testjointure-worker.view.dart';
 
 class BottonNavigationWidget extends StatelessWidget {
   BottonNavigationWidget({Key? key}) : super(key: key);
 
   final List<Widget> _pages = [
     const TableauDeBordView(),
-    const ParametresView(),
+    ParametresView(),
     const ListWorkersView(),
     ListeTachesView()
   ];
@@ -51,17 +53,17 @@ class BottonNavigationWidget extends StatelessWidget {
               }
               if (value == 1) {
                 Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (BuildContext context) => ListWorkersView(),
+                  builder: (BuildContext context) => TestjointureWorkerView(),
                 ));
               }
               if (value == 2) {
                 Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (BuildContext context) => ListeTachesView(),
+                  builder: (BuildContext context) => Testbjointure(),
                 ));
               }
               if (value == 3) {
                 Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const ParametresView(),
+                  builder: (BuildContext context) => ParametresView(),
                 ));
               }
             },
