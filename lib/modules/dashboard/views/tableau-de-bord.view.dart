@@ -4,7 +4,6 @@ import 'package:projet_mars_nan/modules/dashboard/widgets/drawer.widget.dart';
 // import 'package:projet_mars_nan/modules/dashboard/widgets/search.dart';
 import 'package:projet_mars_nan/modules/gestions/controller/taches.controleur.dart';
 import 'package:projet_mars_nan/modules/gestions/controller/travailleurs.controleur.dart';
-import 'package:projet_mars_nan/modules/gestions/views/gestion-travailleurs.view.dart';
 import 'package:projet_mars_nan/modules/gestions/views/lib/pages/home/home.dart';
 
 // import 'package:projet_mars_nan/modules/setting/controller/dataBase.db.dart';
@@ -292,11 +291,11 @@ class _TableauDeBordViewState extends State<TableauDeBordView> {
                     ElevatedButton(
                       onPressed: () {
                         // Naviguer vers la page d'affectation des tâches
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => GestionTravailleursView()),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) => GestionTravailleursView()),
+                        // );
                       },
                       child: Text('Affecter tâche'),
                     ),
@@ -340,11 +339,11 @@ class _TableauDeBordViewState extends State<TableauDeBordView> {
                     ElevatedButton(
                       onPressed: () {
                         // Naviguer vers la page d'affectation des tâches
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => GestionTravailleursView()),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) => GestionTravailleursView()),
+                        // );
                       },
                       child: Text('Affecter tâche'),
                     ),

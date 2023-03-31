@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projet_mars_nan/modules/test/challenge.dart';
+import 'package:projet_mars_nan/modules/test/image_picker.view.dart';
 import 'package:projet_mars_nan/modules/test/quiz.dart';
 import 'package:projet_mars_nan/modules/test/testbjointure.dart';
 import 'package:projet_mars_nan/modules/test/testjointure-worker.view.dart';
@@ -89,6 +91,24 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute<void>(
                 builder: (BuildContext context) => TestjointureWorkerView(),
+              ));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.grid_3x3_outlined),
+            title: Text("Image Picker"),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute<void>(
+                builder: (BuildContext context) => ImagePickerView(),
+              ));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.grid_3x3_outlined),
+            title: Text("Challenge"),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute<void>(
+                builder: (BuildContext context) => Challenge(),
               ));
             },
           ),

@@ -76,7 +76,7 @@ class _DetailViewState extends State<DetailView> {
                     children: [
                       _dataOfWorker != null
                           ? Text(
-                              _dataOfWorker['name'],
+                              '${_dataOfWorker['name']}',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -154,14 +154,6 @@ class _DetailViewState extends State<DetailView> {
                     ),
                   ),
                 ],
-              ),
-            ),
-
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [],
-                ),
               ),
             ),
           ],

@@ -11,7 +11,7 @@ class BottonNavigationWidget extends StatelessWidget {
     const TableauDeBordView(),
     const ParametresView(),
     const ListWorkersView(),
-    const ListeTachesView()
+    ListeTachesView()
   ];
 
   final int _currentIndex = 0;

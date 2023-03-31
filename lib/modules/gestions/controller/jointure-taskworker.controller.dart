@@ -5,10 +5,11 @@ class SQLJointureHelper {
   // ...
 
   static Future<void> createTables(sql.Database database) async {
-    await database.execute("""CREATE TABLE users(
+    await database.execute("""CREATE TABLE worker(
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        username TEXT NOT NULL,
-        password TEXT NOT NULL,
+        name TEXT,
+        fonction TEXT,
+        salary DOUBLE,
         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
       )
       """);
@@ -28,8 +29,9 @@ class SQLJointureHelper {
   static Future<void> createUserTable(sql.Database database) async {
     await database.execute("""CREATE TABLE worker(
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        username TEXT NOT NULL,
-        password TEXT NOT NULL,
+        name TEXT,
+        fonction TEXT,
+        salary DOUBLE,
         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
       )
       """);
@@ -50,7 +52,7 @@ class SQLJointureHelper {
 
   static Future<sql.Database> db() async {
     return sql.openDatabase(
-      'dbtecht_join.db',
+      'dbtecht_join__.db',
       version: 1,
       onCreate: (sql.Database database, int version) async {
         await createUserTable(database);
